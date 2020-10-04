@@ -1,0 +1,34 @@
+version: '3.6'
+networks:
+  favourite-net:
+    driver: bridge
+services:
+  app:
+    networks:
+      - favourite-net
+    build:
+      context: ""
+    container_name: favourite
+    ports:
+      - 80:80
+    restart: unless-stopped
+    depends_on:
+      - database
+    tty: true
+  database:
+    networks:
+      - favourite-net
+    image: postgres
+    container_name: database
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=favourites_db
+    volumes:
+      - database-data:/var/lib/postgresql/data/
+
+volumes:
+  database-data:
+    driver: local

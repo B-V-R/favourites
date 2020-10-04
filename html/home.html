@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Favourites App</title>
+    <style>
+        .button {
+            border: none;
+            color: white;
+            padding: 16px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            transition-duration: 0.4s;
+            cursor: pointer;
+        }
+
+        .button1 {
+            background-color: white;
+            color: black;
+            border: 2px solid #4CAF50;
+        }
+
+        .button1:hover {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .button2 {
+            background-color: white;
+            color: black;
+            border: 2px solid #008CBA;
+        }
+
+        .button2:hover {
+            background-color: #008CBA;
+            color: white;
+        }
+
+    </style>
+</head>
+<body>
+<div id="id01" align=center></div>
+<script>
+    var Menu = [
+        {
+            "display": "Sign Up",
+            "url": "http://localhost:80/page/signup"
+        },
+        {
+            "display": "Sign In",
+            "url": "http://localhost:80/page/signin"
+        }
+    ];
+
+    myFunction(Menu);
+
+    function myFunction(arr) {
+        var out = "";
+        var i;
+        for (i = 0; i < arr.length; i++) {
+            out += '<button class="button button1" align=center onClick="process()"> <a href="' + arr[i].url + '">' +
+                arr[i].display + '</a><br></button>';
+        }
+        document.getElementById("id01").innerHTML = out;
+    }
+</script>
+</body>
+</html>
